@@ -8,11 +8,11 @@ type Article struct {
 	Desc  string `json:"desc"`
 }
 
-func (b Article) TableName() string {
-	return "blog_article"
-}
-
-type TagArticle struct {
+type ArticleSwagger struct {
 	List  []*Article
 	Pager *app.Pager
+}
+
+func (b Article) TableName() string {
+	return "blog_article"
 }

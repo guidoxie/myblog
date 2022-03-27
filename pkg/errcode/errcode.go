@@ -40,6 +40,7 @@ func (e *Error) Details() []string {
 	return e.details
 }
 func (e *Error) WithDetails(details ...string) *Error {
+	e.details = []string{}
 	for _, d := range details {
 		e.details = append(e.details, d)
 	}
