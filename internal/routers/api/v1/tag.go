@@ -37,7 +37,7 @@ func (t Tag) List(c *gin.Context) {
 		response = app.NewResponse(c)
 	)
 	valid, errs := app.BindAndValid(c, &param)
-	if valid {
+	if !valid {
 		global.Logger.Errorf("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
 		return
