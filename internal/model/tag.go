@@ -36,7 +36,7 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	var tags []*Tag
 
-	if pageSize >= 0 && pageSize > 0 {
+	if pageOffset >= 0 && pageSize > 0 {
 		db = db.Offset(pageOffset).Limit(pageSize)
 	}
 	if t.Name != "" {

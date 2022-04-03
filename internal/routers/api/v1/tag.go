@@ -44,7 +44,7 @@ func (t Tag) List(c *gin.Context) {
 	}
 	var (
 		svc   = service.New(c.Request.Context())
-		pager = app.Pager{Page: app.GetPageSize(c), PageSize: app.GetPageSize(c)}
+		pager = app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	)
 	// 获取标签数量
 	totalRows, err := svc.CountTag(&service.CountTagRequest{Name: param.Name, State: param.State})
