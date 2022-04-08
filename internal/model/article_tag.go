@@ -29,6 +29,15 @@ func (a ArticleTag) ListByTID(db *gorm.DB) ([]*ArticleTag, error) {
 	return articleTags, nil
 }
 
+func (a ArticleTag) ListByAIDs(db *gorm.DB, articleIDs []uint32) ([]*ArticleTag, error) {
+	var articleTags []*ArticleTag
+	err := db.Where("article_id IN (?) AND is_del=?", articleIDs, 0).Find(&articleTags).Error
+	if err != nil && err != gorm.ErrRecordNotFound {
+		return nil, err
+	}
+	return articleTags, nil
+}
+
 func (a ArticleTag) Create(db *gorm.DB) error {
 	return db.Create(&a).Error
 }
