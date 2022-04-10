@@ -2,19 +2,11 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/guidoxie/myblog/internal/model"
 	"github.com/guidoxie/myblog/pkg/app"
 	"github.com/guidoxie/myblog/pkg/errcode"
 )
 
 type Article struct {
-	ID            uint32     `json:"id"`
-	Title         string     `json:"title"`
-	Desc          string     `json:"desc"`
-	Content       string     `json:"content"`
-	CoverImageUrl string     `json:"cover_image_url"`
-	State         uint8      `json:"state"`
-	Tag           *model.Tag `json:"tag"`
 }
 
 func NewArticle() Article {
