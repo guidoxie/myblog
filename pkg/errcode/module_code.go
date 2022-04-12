@@ -11,5 +11,5 @@ var (
 	ErrorGetArticlesFail   = NewError(2002_0002, "获取多个文章失败")
 	ErrorCreateArticleFail = NewError(2002_0003, "创建文章失败")
 	ErrorUpdateArticleFail = NewError(2002_0004, "更新文章失败")
-	ErrorDeleteArticleFail = NewError(2002_0004, "删除文章失败")
+	ErrorDeleteArticleFail = NewError(2002_0005, "删除文章失败")
 )

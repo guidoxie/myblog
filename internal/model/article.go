@@ -47,7 +47,7 @@ func (a Article) Get(db *gorm.DB) (Article, error) {
 	return article, nil
 }
 func (a Article) Delete(db *gorm.DB) error {
-	return db.Where("id=? ADN is_del=?", a.ID, 0).Delete(&a).Error
+	return db.Where("id=? AND is_del=?", a.ID, 0).Delete(&a).Error
 }
 
 type ArticleRow struct {
@@ -94,8 +94,8 @@ func (a Article) CountByTagID(db *gorm.DB, tagID uint32) (int, error) {
 	var count int
 	err := db.Table(ArticleTag{}.TableName()+" AS at ").
 		Joins("LEFT JOIN `"+Tag{}.TableName()+"` AS t ON at.tag_id=t.id").
-		Joins("LEFT JOIN `"+Article{}.TableName()+" AS ar ON at.article_id=ar.id").
-		Where("at.`tag_id`=?  AND ar.state=? AND ar.is_del=?", tagID, a.State, 0).Count(&count).Error
+		Joins("LEFT JOIN `"+Article{}.TableName()+"` AS ar ON at.article_id=ar.id").
+		Where("at.tag_id=? AND ar.state=? AND ar.is_del=?", tagID, a.State, 0).Count(&count).Error
 	if err != nil {
 		return 0, err
 	}
